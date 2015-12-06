@@ -1,6 +1,6 @@
 # go-bjf
 
-[![Build Status](https://travis-ci.org/xor-gate/go-bjf.svg)](https://travis-ci.org/xor-gate/go-bjf)
+[![Build Status](https://travis-ci.org/xor-gate/go-bjf.svg)](https://travis-ci.org/xor-gate/go-bjf)[![Coverage Status](https://coveralls.io/repos/xor-gate/go-bjf/badge.svg?branch=master&service=github)](https://coveralls.io/github/xor-gate/go-bjf?branch=master)
 
 Golang implementation of bijective function algorithm used in url shorters, see:
 http://stackoverflow.com/questions/742013/how-to-code-a-url-shortener
