@@ -16,7 +16,7 @@ const (
 	Base62 Base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 )
 
-var alphabetConfig = Base64
+var alphabetConfig = Base62
 
 func Config(b Base) {
 	alphabetConfig = b
