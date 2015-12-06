@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestEncodeDefaultBase64Zero(t *testing.T) {
+func TestEncodeDefaultBase62Zero(t *testing.T) {
 	id := "0"
 	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
@@ -14,7 +14,7 @@ func TestEncodeDefaultBase64Zero(t *testing.T) {
 	}
 }
 
-func TestEncodeDefaultBase64(t *testing.T) {
+func TestEncodeDefaultBase62(t *testing.T) {
 	id := "125"
 	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
@@ -23,7 +23,7 @@ func TestEncodeDefaultBase64(t *testing.T) {
 	}
 }
 
-func TestDecodeDefaultBase64(t *testing.T) {
+func TestDecodeDefaultBase62(t *testing.T) {
 	id := "e9a"
 	r := Decode(id)
 	fmt.Printf("%s -> %d\n", id, r)
@@ -32,9 +32,9 @@ func TestDecodeDefaultBase64(t *testing.T) {
 	}
 }
 
-func TestEncodeBase61Zero(t *testing.T) {
+func TestEncodeBase59Zero(t *testing.T) {
 	id := "0"
-	Config(Base61)
+	Config(Base59)
 	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "a" {
@@ -42,9 +42,9 @@ func TestEncodeBase61Zero(t *testing.T) {
 	}
 }
 
-func TestEncodeBase61(t *testing.T) {
+func TestEncodeBase59(t *testing.T) {
 	id := "125"
-	Config(Base61)
+	Config(Base59)
 	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "ch" {
@@ -52,9 +52,9 @@ func TestEncodeBase61(t *testing.T) {
 	}
 }
 
-func TestDecodeBase61(t *testing.T) {
+func TestDecodeBase59(t *testing.T) {
 	id := "e9a"
-	Config(Base61)
+	Config(Base59)
 	r := Decode(id)
 	fmt.Printf("%s -> %d\n", id, r)
 	if r != 17346 {
@@ -64,7 +64,7 @@ func TestDecodeBase61(t *testing.T) {
 
 func TestEncodeBase36Zero(t *testing.T) {
 	id := "0"
-	Config(Base61)
+	Config(Base59)
 	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "a" {
@@ -74,7 +74,7 @@ func TestEncodeBase36Zero(t *testing.T) {
 
 func TestEncodeBase36(t *testing.T) {
 	id := "125"
-	Config(Base61)
+	Config(Base59)
 	r := Encode("125")
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "ch" {
@@ -84,7 +84,7 @@ func TestEncodeBase36(t *testing.T) {
 
 func TestDecodeBase36(t *testing.T) {
 	id := "e9a"
-	Config(Base61)
+	Config(Base59)
 	r := Decode("e9a")
 	fmt.Printf("%s -> %d\n", id, r)
 	if r != 17346 {
@@ -92,27 +92,27 @@ func TestDecodeBase36(t *testing.T) {
 	}
 }
 
-func BenchmarkEncodeDefaultBase64(b *testing.B) {
+func BenchmarkEncodeDefaultBase62(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Encode("125")
 	}
 }
 
-func BenchmarkDecodeBase64(b *testing.B) {
+func BenchmarkDecodeBase62(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Decode("e9a")
 	}
 }
 
-func BenchmarkEncodeBase61(b *testing.B) {
-	Config(Base61)
+func BenchmarkEncodeBase59(b *testing.B) {
+	Config(Base59)
 	for i := 0; i < b.N; i++ {
 		Encode("125")
 	}
 }
 
-func BenchmarkDecodeBase61(b *testing.B) {
-	Config(Base61)
+func BenchmarkDecodeBase59(b *testing.B) {
+	Config(Base59)
 	for i := 0; i < b.N; i++ {
 		Decode("e9a")
 	}

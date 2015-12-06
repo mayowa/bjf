@@ -12,8 +12,8 @@ import (
 type Base string
 const (
 	Base36 Base = "abcdefghijklmnopqrstuvwxyz0123456789"
-	Base61 Base = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789"
-	Base64 Base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	Base59 Base = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789"
+	Base62 Base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 )
 
 var alphabetConfig = Base64
