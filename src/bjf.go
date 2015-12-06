@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/xor-gate/go-bijective"
+	"github.com/xor-gate/go-bjf"
 )
 
 var mode  = flag.String("mode",  "encode", "Action encode/decode (default: encode)")
