@@ -5,9 +5,18 @@ import (
 	"testing"
 )
 
+func TestEncodeDefaultBase64Zero(t *testing.T) {
+	id := "0"
+	r := Encode(id)
+	fmt.Printf("%s -> %s\n", id, r)
+	if r != "a" {
+		t.Error("Unexpected encoded id", r)
+	}
+}
+
 func TestEncodeDefaultBase64(t *testing.T) {
 	id := "125"
-	r := Encode("125")
+	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "cb" {
 		t.Error("Unexpected encoded id", r)
@@ -16,17 +25,27 @@ func TestEncodeDefaultBase64(t *testing.T) {
 
 func TestDecodeDefaultBase64(t *testing.T) {
 	id := "e9a"
-	r := Decode("e9a")
+	r := Decode(id)
 	fmt.Printf("%s -> %d\n", id, r)
 	if r != 19158 {
 		t.Error("Unexpected decoded id", r)
 	}
 }
 
+func TestEncodeBase61Zero(t *testing.T) {
+	id := "0"
+	Config(Base61)
+	r := Encode(id)
+	fmt.Printf("%s -> %s\n", id, r)
+	if r != "a" {
+		t.Error("Unexpected encoded id", r)
+	}
+}
+
 func TestEncodeBase61(t *testing.T) {
 	id := "125"
 	Config(Base61)
-	r := Encode("125")
+	r := Encode(id)
 	fmt.Printf("%s -> %s\n", id, r)
 	if r != "ch" {
 		t.Error("Unexpected encoded id", r)
@@ -36,10 +55,20 @@ func TestEncodeBase61(t *testing.T) {
 func TestDecodeBase61(t *testing.T) {
 	id := "e9a"
 	Config(Base61)
-	r := Decode("e9a")
+	r := Decode(id)
 	fmt.Printf("%s -> %d\n", id, r)
 	if r != 17346 {
 		t.Error("Unexpected decoded id", r)
+	}
+}
+
+func TestEncodeBase36Zero(t *testing.T) {
+	id := "0"
+	Config(Base61)
+	r := Encode(id)
+	fmt.Printf("%s -> %s\n", id, r)
+	if r != "a" {
+		t.Error("Unexpected encoded id", r)
 	}
 }
 
