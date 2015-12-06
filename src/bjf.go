@@ -10,6 +10,7 @@ import (
 )
 
 var mode  = flag.String("mode",  "encode", "Action encode/decode (default: encode)")
+var base  = flag.String("base",  "Base64", "Base of alphabet (use: Base36, Base61, Base64)")
 var token = flag.String("token", "125", "Token to encode/decode")
 
 var Usage = func() {
@@ -18,7 +19,20 @@ var Usage = func() {
 }
 
 func main() {
+	var b bjf.Base = bjf.Base64
+
 	flag.Parse()
+
+	switch *base {
+		case "Base36":
+			b = bjf.Base64
+		case "Base61":
+			b = bjf.Base61
+		case "Base64":
+			b = bjf.Base64
+	}
+
+	bjf.Config(b)
 
 	if *mode == "encode" {
 		r := bjf.Encode(*token)

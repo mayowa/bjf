@@ -9,7 +9,18 @@ import (
 	"strconv"
 )
 
-const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+type Base string
+const (
+	Base36 Base = "abcdefghijklmnopqrstuvwxyz0123456789"
+	Base61 Base = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789"
+	Base64 Base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+)
+
+var alphabetConfig = Base64
+
+func Config(b Base) {
+	alphabetConfig = b
+}
 
 func Encode(num string) string {
 	n, _ := strconv.ParseUint(num, 10, 64)
@@ -17,14 +28,14 @@ func Encode(num string) string {
 
 	/* Special case */
 	if n == 0 {
-		return string(alphabet[0])
+		return string(alphabetConfig[0])
 	}
 
 	/* Map */
 	for n > 0 {
-		r := n % uint64(len(alphabet))
-		t = append(t, alphabet[r])
-		n = n / uint64(len(alphabet))
+		r := n % uint64(len(alphabetConfig))
+		t = append(t, alphabetConfig[r])
+		n = n / uint64(len(alphabetConfig))
 	}
 
 	/* Reverse */
@@ -40,7 +51,7 @@ func Decode(token string) int {
 	p := float64(len(token)) - 1
 
 	for i := 0; i < len(token); i++ {
-		r += strings.Index(alphabet, string(token[i])) * int(math.Pow(float64(len(alphabet)), p))
+		r += strings.Index(string(alphabetConfig), string(token[i])) * int(math.Pow(float64(len(alphabetConfig)), p))
 		p--
 	}
 

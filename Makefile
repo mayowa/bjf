@@ -6,6 +6,9 @@ all: tools
 test:
 	go test -v -race
 
+coverage:
+	go test -cover
+
 lint:
 	go tool vet .
 
