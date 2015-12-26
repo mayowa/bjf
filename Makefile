@@ -23,5 +23,5 @@ tools: $(GOBIN)/bjf
 clean:
 	rm -f $(GOBIN)/bjf
 
-$(GOBIN)/bjf: bjf.go src/bjf.go
-	go install src/bjf.go
+$(GOBIN)/bjf: bjf.go cmd/bjf/main.go
+	go install -v github.com/xor-gate/go-bjf/cmd/bjf
