@@ -8,4 +8,4 @@ build_script:
 - cmd: go get -v github.com/xor-gate/go-bjf/...
 - cmd: go build github.com/xor-gate/go-bjf
 test_script:
-- cmd: go test -v github.com/go-bjf
+- cmd: go test -v github.com/xor-gate/go-bjf
