@@ -1,0 +1,12 @@
+version: '{build}'
+clone_folder: C:\gopath\src\github.com\xor-gate\go-bjf
+environment:
+  GOPATH: C:\gopath
+build_script:
+- cmd: >-
+    go version
+    go env
+    go get -v github.com/xor-gate/go-bjf/...
+    go build github.com/xor-gate/go-bjf
+test_script:
+- cmd: go test -v github.com/go-bjf
